@@ -23,6 +23,7 @@ public class Gasto {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
+    //Yo como gasto me relaciono con muchos gastos
     @ManyToOne
     @JoinColumn(name = "fk_comercio")
     private Comercio comercio;
