@@ -1,12 +1,10 @@
 package com.example.Spendy.modelos;
-
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +23,8 @@ public class MetodoPago {
     private boolean estado;
     private String descripcion;
     
-
-    @ManyToAny
+    //Relación Muchos métodos de pago 1 Usuario
+    @ManyToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName="id")
     private Usuario usuario;
     

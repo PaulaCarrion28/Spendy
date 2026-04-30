@@ -16,11 +16,12 @@ public class Gasto {
     private LocalDate fecha;
     private Double valor;
     private String icono;
-    private Boolean esNecesario;
+    private Boolean esNecesario; 
     private String ubicacion;
 
+    //Relación Muchos gastos 1 Usuario
     @ManyToOne
-    @JoinColumn(name = "fk_usuario")
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id")
     private Usuario usuario;
 
     //Yo como gasto me relaciono con muchos gastos

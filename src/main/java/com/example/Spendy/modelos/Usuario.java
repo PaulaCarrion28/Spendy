@@ -60,15 +60,11 @@ private Genero genero;
 @Column(name = "contraseña", nullable = false, unique = true, length = 20)
 private String contraseña;
 
-//creando una relación con el modelo Gasto
-
-//Yo como usuario me relaciono con muchos gastos 
-
+//Relación 1 Usuario Muchos gastos
 @OneToMany(mappedBy="usuario")
 private List <Gasto> gastos;
 
-
-//Yo como usuario me relaciono con muchos metodos de pago 
+//Relación 1 Usuario Muchos métodos de pago 
 @OneToMany(mappedBy="usuario")
 private List <MetodoPago> metodoPagos;
 

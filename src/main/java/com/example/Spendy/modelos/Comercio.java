@@ -1,10 +1,5 @@
 package com.example.Spendy.modelos;
-
-
-import java.util.List;
-
 import com.example.Spendy.modelos.utils.TipoComercio;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,7 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -56,11 +52,10 @@ public class Comercio {
     @Column(name="descripcion", nullable = true, unique = false, length = 500)
     private String descripcion; // Que vende o que servicios ofrece
 
-
-    //Relacion 1 comercio con muchos gastos
-
-    @OneToMany(mappedBy="usuario")
-    private List <Gasto> gastos;
+    //Relación Muchos comercios 1 gasto
+   @ManyToOne
+    @JoinColumn(name = "fk_gasto", referencedColumnName = "id")
+    private Gasto gasto;
 
 
     public Comercio() {

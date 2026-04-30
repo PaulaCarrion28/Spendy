@@ -58,7 +58,7 @@ public class Categoria {
     @Column(name = "tipo", nullable = false, unique = false)
     @Enumerated(EnumType.STRING)
 
-    //Creando una relación con el modelo Gasto
+    //Relación Muchas categorías 1 gasto
     @ManyToOne
     @JoinColumn(name = "fk_gasto", referencedColumnName = "id")
     private Gasto gasto;
