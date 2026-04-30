@@ -36,8 +36,6 @@ public class Gasto {
     @OneToMany(mappedBy = "gasto")
     private List<Categoria> categorias;
 
-    public Gasto() {}
-
     public Gasto(Long id, String descripcion, LocalDate fecha, Double valor,
                  String icono, Boolean esNecesario, String ubicacion,
                  Usuario usuario, Comercio comercio, MetodoPago metodoPago) {

@@ -27,11 +27,17 @@ public class MetodoPago {
     @ManyToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName="id")
     private Usuario usuario;
-    
-    public MetodoPago() {
+   
+    public MetodoPago(Integer id, String nombre, String franquicia, boolean estado, String descripcion,
+            Usuario usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.franquicia = franquicia;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.usuario = usuario;
     }
 
-    
     public Integer getId() {
         return id;
     }

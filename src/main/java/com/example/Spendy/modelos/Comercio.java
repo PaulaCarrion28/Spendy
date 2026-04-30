@@ -58,8 +58,21 @@ public class Comercio {
     private Gasto gasto;
 
 
-    public Comercio() {
-    }
+
+    public Comercio(Integer id, String nit, String nombre, String actividad, String correo, String telefono,
+        TipoComercio tipoComercio, String direccion, String url, String descripcion, Gasto gasto) {
+    this.id = id;
+    this.nit = nit;
+    this.nombre = nombre;
+    this.actividad = actividad;
+    this.correo = correo;
+    this.telefono = telefono;
+    this.tipoComercio = tipoComercio;
+    this.direccion = direccion;
+    this.url = url;
+    this.descripcion = descripcion;
+    this.gasto = gasto;
+}
 
     public Integer getId() {
         return id;

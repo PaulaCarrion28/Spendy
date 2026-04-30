@@ -68,13 +68,25 @@ private List <Gasto> gastos;
 @OneToMany(mappedBy="usuario")
 private List <MetodoPago> metodoPagos;
 
-
-public Usuario() {
+public Usuario(Integer id, String nombres, TipoDocumento tipoDocumento, String documento, Integer edad, String correo,
+        String telefono, Double salario, Genero genero, String contraseña, List<Gasto> gastos,
+        List<MetodoPago> metodoPagos) {
+    this.id = id;
+    this.nombres = nombres;
+    this.tipoDocumento = tipoDocumento;
+    this.documento = documento;
+    this.edad = edad;
+    this.correo = correo;
+    this.telefono = telefono;
+    this.salario = salario;
+    this.genero = genero;
+    this.contraseña = contraseña;
+    this.gastos = gastos;
+    this.metodoPagos = metodoPagos;
 }
 
 
 // Getters y Setters
-
 public Integer getId() {
     return id;
 }
