@@ -36,7 +36,7 @@ public class CategoriaServicio {
     }
 
     //Servicio para eliminar un usuario en bd
-
+       
     //Servicio para modificar un usuario en bd
 
     //Servicio para buscar usuario por su id
