@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gastos")
+@RequestMapping("/spendyapi/v1/gastos")
 public class GastoControlador {
 
     @Autowired
