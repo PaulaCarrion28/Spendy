@@ -13,7 +13,7 @@ import com.example.Spendy.modelos.Categoria;
 import com.example.Spendy.servicios.CategoriaServicio;
 
 @RestController
-@RequestMapping("/spendy/v1/categorias")
+@RequestMapping("/spendyapi/v1/categorias")
 public class CategoriaControlador {
  //Inyectar el servicio correspondiente 
  @Autowired

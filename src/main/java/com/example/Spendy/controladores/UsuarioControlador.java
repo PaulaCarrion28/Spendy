@@ -13,7 +13,7 @@ import com.example.Spendy.modelos.Usuario;
 import com.example.Spendy.servicios.UsuarioServicio;
 
 @RestController
-@RequestMapping("/spendyapi/v1/usuarios")//Bautiza los servicios
+@RequestMapping("/spendyapi/v1/usuarios")
 
 public class UsuarioControlador {
 
