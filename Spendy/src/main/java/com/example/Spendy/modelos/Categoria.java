@@ -59,9 +59,9 @@ public class Categoria {
     @Enumerated(EnumType.STRING)
 
     //Creando una relación con el modelo Gasto
-    @ManyToOne
-    @JoinColumn(name = "fk_gasto", referencedColumnName = "id")
-    private Gasto gasto;
+  @ManyToOne
+@JoinColumn(name = "gasto_id")
+private Gasto gasto;
 
     private String tipo; //→ Define si la categoría es fija, variable, ocasional, etc
     public Categoria(Integer id, String nombre, LocalDate fechaCreacion, String responsable, Integer edad,

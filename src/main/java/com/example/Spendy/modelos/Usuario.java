@@ -3,171 +3,193 @@ package com.example.Spendy.modelos;
 import java.util.List;
 
 import com.example.Spendy.modelos.utils.Genero;
+import com.example.Spendy.modelos.utils.TipoDocumento;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.EnumType;
 
-import com.example.Spendy.modelos.utils.TipoDocumento;
-
-@Entity  // Esta clase Java representa una tabla en la base de datos
-@Table(name = "usuarios")  // Especifica el nombre de la tabla en la base de datos
+@Entity
+@Table(name = "usuarios")
 
 public class Usuario {
- //id,nombres,tipodoc,documento,edad
- // Correo, telefono, salario, genero, contraseña
 
-@Id // Indica que este campo es la clave primaria de la tabla
-@GeneratedValue(strategy = GenerationType.IDENTITY) // Especifica que el valor de este campo se generará automáticamente por la base de datos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    private Integer id;
 
-private Integer id;
-@Column(name = "nombres", nullable= false, unique = false, length =50)
-private String nombres;
+    @Column(name = "nombres", nullable = false, length = 50)
+    private String nombres;
 
+    @Column(name = "tipo_documento", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoDocumento tipoDocumento;
 
-@Column(name="tipo_documento", nullable = false, unique = false)
-@Enumerated (EnumType.STRING)
-private TipoDocumento tipoDocumento; 
+    @Column(name = "documento", nullable = false, unique = true, length = 15)
+    private String documento;
 
+    @Column(name = "edad", nullable = false)
+    private Integer edad;
 
-@Column(name= "documento", nullable = false, unique = true, length =15)
-private String documento;
+    @Column(name = "correo", nullable = false, unique = true, length = 100)
+    private String correo;
 
+    @Column(name = "telefono", nullable = false, unique = true, length = 20)
+    private String telefono;
 
-@Column(name="edad", nullable = false, unique = false, length = 50)
-private Integer edad;
+    @Column(name = "salario", nullable = false)
+    private Double salario;
 
-@Column(name= "correo", nullable = false, unique = true, length = 100)
-private String correo;
+    @Column(name = "genero", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
-@Column(name = "telefono", nullable = false, unique = true, length = 20)
-private String telefono;   
+    @Column(name = "contraseña", nullable = false, length = 20)
+    private String contraseña;
 
-@Column(name="salario", nullable = false, unique = false)
-private Double salario;
+    // Relación Usuario -> Gastos
+    @OneToMany(mappedBy = "usuario")
+    private List<Gasto> gastos;
 
-@Column(name ="genero", nullable = false, unique = false)
-@Enumerated(EnumType.STRING)
-private Genero genero;
+    // Relación Usuario -> Métodos de pago
+    @OneToMany(mappedBy = "usuario")
+    private List<MetodoPago> metodoPagos;
 
-@Column(name = "contraseña", nullable = false, unique = true, length = 20)
-private String contraseña;
+    // CONSTRUCTOR VACÍO 🚨 NECESARIO PARA HIBERNATE
+    public Usuario() {
+    }
 
-//Relación 1 Usuario Muchos gastos
-@OneToMany(mappedBy="usuario")
-private List <Gasto> gastos;
+    // Constructor completo
+    public Usuario(
+            Integer id,
+            String nombres,
+            TipoDocumento tipoDocumento,
+            String documento,
+            Integer edad,
+            String correo,
+            String telefono,
+            Double salario,
+            Genero genero,
+            String contraseña,
+            List<Gasto> gastos,
+            List<MetodoPago> metodoPagos
+    ) {
+        this.id = id;
+        this.nombres = nombres;
+        this.tipoDocumento = tipoDocumento;
+        this.documento = documento;
+        this.edad = edad;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.salario = salario;
+        this.genero = genero;
+        this.contraseña = contraseña;
+        this.gastos = gastos;
+        this.metodoPagos = metodoPagos;
+    }
 
-//Relación 1 Usuario Muchos métodos de pago 
-@OneToMany(mappedBy="usuario")
-private List <MetodoPago> metodoPagos;
+    // GETTERS Y SETTERS
 
-public Usuario(Integer id, String nombres, TipoDocumento tipoDocumento, String documento, Integer edad, String correo,
-        String telefono, Double salario, Genero genero, String contraseña, List<Gasto> gastos,
-        List<MetodoPago> metodoPagos) {
-    this.id = id;
-    this.nombres = nombres;
-    this.tipoDocumento = tipoDocumento;
-    this.documento = documento;
-    this.edad = edad;
-    this.correo = correo;
-    this.telefono = telefono;
-    this.salario = salario;
-    this.genero = genero;
-    this.contraseña = contraseña;
-    this.gastos = gastos;
-    this.metodoPagos = metodoPagos;
-}
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-// Getters y Setters
-public Integer getId() {
-    return id;
-}
+    public String getNombres() {
+        return nombres;
+    }
 
-public void setId(Integer id) {
-    this.id = id;
-}
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
 
-public String getNombres() {
-    return nombres;
-}
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
 
-public void setNombres(String nombres) {
-    this.nombres = nombres;
-}
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
 
+    public String getDocumento() {
+        return documento;
+    }
 
-public String getDocumento() {
-    return documento;
-}
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
 
+    public Integer getEdad() {
+        return edad;
+    }
 
-public void setDocumento(String documento) {
-    this.documento = documento;
-}
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 
-public Integer getEdad() {
-    return edad;
-}
+    public String getCorreo() {
+        return correo;
+    }
 
-public void setEdad(Integer edad) {
-    this.edad = edad;
-}
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-public String getCorreo() {
-    return correo;
-}
+    public String getTelefono() {
+        return telefono;
+    }
 
-public void setCorreo(String correo) {
-    this.correo = correo;
-}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-public String getTelefono() {
-    return telefono;
-}
+    public Double getSalario() {
+        return salario;
+    }
 
-public void setTelefono(String telefono) {
-    this.telefono = telefono;
-}
+    public void setSalario(Double salario) {
+        this.salario = salario;
+    }
 
-public Double getSalario() {
-    return salario;
-}
+    public Genero getGenero() {
+        return genero;
+    }
 
-public void setSalario(Double salario) {
-    this.salario = salario;
-}
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
 
-public Genero getGenero() {
-    return genero;
-}
+    public String getContraseña() {
+        return contraseña;
+    }
 
-public void setGenero(Genero genero) {
-    this.genero = genero;
-}
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
 
-public String getContraseña() {
-    return contraseña;
-}
+    public List<Gasto> getGastos() {
+        return gastos;
+    }
 
-public void setContraseña(String contraseña) {
-    this.contraseña = contraseña;
-}
+    public void setGastos(List<Gasto> gastos) {
+        this.gastos = gastos;
+    }
 
-public TipoDocumento getTipoDocumento() {
-    return tipoDocumento;
-}
+    public List<MetodoPago> getMetodoPagos() {
+        return metodoPagos;
+    }
 
-public void setTipoDocumento(TipoDocumento tipoDocumento) {
-    this.tipoDocumento = tipoDocumento;
-}
-
-
+    public void setMetodoPagos(List<MetodoPago> metodoPagos) {
+        this.metodoPagos = metodoPagos;
+    }
 }

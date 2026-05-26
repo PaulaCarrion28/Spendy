@@ -32,6 +32,8 @@ public interface IUsuarioRepositorio extends JpaRepository<Usuario, Integer>{
     //Buscar por documento 
     Optional<Usuario> findByDocumento(String documento);
 
+    Optional<Usuario> findByCorreoAndContraseña(String correo, String contraseña);
+
     //Buscar por edad 
     List<Usuario> findByEdad(Integer edad);
 
